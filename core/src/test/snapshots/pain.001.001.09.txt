@@ -1,0 +1,1985 @@
+schema pain.001.001.09.xsd
+targetNamespace urn:iso:std:iso:20022:tech:xsd:pain.001.001.09
+xmlns:ns0 urn:iso:std:iso:20022:tech:xsd:pain.001.001.09
+roots ns0:Document
+
+element ns0:Document [1..1] : ns0:Document
+  sequence [1..1]
+    element ns0:CstmrCdtTrfInitn [1..1] : ns0:CustomerCreditTransferInitiationV09
+      sequence [1..1]
+        element ns0:GrpHdr [1..1] : ns0:GroupHeader85
+          sequence [1..1]
+            element ns0:MsgId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+            element ns0:CreDtTm [1..1] : ns0:ISODateTime <dateTime>
+            element ns0:Authstn [0..2] : ns0:Authorisation1Choice
+              choice [1..1]
+                element ns0:Cd [1..1] : ns0:Authorisation1Code <string enum=[AUTH|FDET|FSUM|ILEV]>
+                element ns0:Prtry [1..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+            element ns0:NbOfTxs [1..1] : ns0:Max15NumericText <string pattern="[0-9]{1,15}">
+            element ns0:CtrlSum [0..1] : ns0:DecimalNumber <decimal totalDigits=18 fractionDigits=17>
+            element ns0:InitgPty [1..1] : ns0:PartyIdentification135
+              sequence [1..1]
+                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                  sequence [1..1]
+                    element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                        element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                            element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Id [0..1] : ns0:Party38Choice
+                  choice [1..1]
+                    element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                      sequence [1..1]
+                        element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                      sequence [1..1]
+                        element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                          sequence [1..1]
+                            element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                            element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                element ns0:CtctDtls [0..1] : ns0:Contact4
+                  sequence [1..1]
+                    element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                    element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..*] : ns0:OtherContact1
+                      sequence [1..1]
+                        element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                        element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                    element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+            element ns0:FwdgAgt [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+              sequence [1..1]
+                element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                  sequence [1..1]
+                    element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                    element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                      sequence [1..1]
+                        element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:BrnchId [0..1] : ns0:BranchData3
+                  sequence [1..1]
+                    element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+        element ns0:PmtInf [1..*] : ns0:PaymentInstruction30
+          sequence [1..1]
+            element ns0:PmtInfId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+            element ns0:PmtMtd [1..1] : ns0:PaymentMethod3Code <string enum=[CHK|TRF|TRA]>
+            element ns0:BtchBookg [0..1] : ns0:BatchBookingIndicator <boolean>
+            element ns0:NbOfTxs [0..1] : ns0:Max15NumericText <string pattern="[0-9]{1,15}">
+            element ns0:CtrlSum [0..1] : ns0:DecimalNumber <decimal totalDigits=18 fractionDigits=17>
+            element ns0:PmtTpInf [0..1] : ns0:PaymentTypeInformation26
+              sequence [1..1]
+                element ns0:InstrPrty [0..1] : ns0:Priority2Code <string enum=[HIGH|NORM]>
+                element ns0:SvcLvl [0..*] : ns0:ServiceLevel8Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalServiceLevel1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:LclInstrm [0..1] : ns0:LocalInstrument2Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalLocalInstrument1Code <string minLength=1 maxLength=35>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:CtgyPurp [0..1] : ns0:CategoryPurpose1Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalCategoryPurpose1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+            element ns0:ReqdExctnDt [1..1] : ns0:DateAndDateTime2Choice
+              choice [1..1]
+                element ns0:Dt [1..1] : ns0:ISODate <date>
+                element ns0:DtTm [1..1] : ns0:ISODateTime <dateTime>
+            element ns0:PoolgAdjstmntDt [0..1] : ns0:ISODate <date>
+            element ns0:Dbtr [1..1] : ns0:PartyIdentification135
+              sequence [1..1]
+                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                  sequence [1..1]
+                    element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                        element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                            element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Id [0..1] : ns0:Party38Choice
+                  choice [1..1]
+                    element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                      sequence [1..1]
+                        element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                      sequence [1..1]
+                        element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                          sequence [1..1]
+                            element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                            element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                element ns0:CtctDtls [0..1] : ns0:Contact4
+                  sequence [1..1]
+                    element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                    element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..*] : ns0:OtherContact1
+                      sequence [1..1]
+                        element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                        element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                    element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+            element ns0:DbtrAcct [1..1] : ns0:CashAccount38
+              sequence [1..1]
+                element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                  choice [1..1]
+                    element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                    element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                        element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                  sequence [1..1]
+                    element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+            element ns0:DbtrAgt [1..1] : ns0:BranchAndFinancialInstitutionIdentification6
+              sequence [1..1]
+                element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                  sequence [1..1]
+                    element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                    element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                      sequence [1..1]
+                        element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:BrnchId [0..1] : ns0:BranchData3
+                  sequence [1..1]
+                    element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+            element ns0:DbtrAgtAcct [0..1] : ns0:CashAccount38
+              sequence [1..1]
+                element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                  choice [1..1]
+                    element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                    element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                        element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                  sequence [1..1]
+                    element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+            element ns0:InstrForDbtrAgt [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+            element ns0:UltmtDbtr [0..1] : ns0:PartyIdentification135
+              sequence [1..1]
+                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                  sequence [1..1]
+                    element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                        element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                            element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                    element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Id [0..1] : ns0:Party38Choice
+                  choice [1..1]
+                    element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                      sequence [1..1]
+                        element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                      sequence [1..1]
+                        element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                          sequence [1..1]
+                            element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                            element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                element ns0:CtctDtls [0..1] : ns0:Contact4
+                  sequence [1..1]
+                    element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                    element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                    element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..*] : ns0:OtherContact1
+                      sequence [1..1]
+                        element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                        element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                    element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+            element ns0:ChrgBr [0..1] : ns0:ChargeBearerType1Code <string enum=[DEBT|CRED|SHAR|SLEV]>
+            element ns0:ChrgsAcct [0..1] : ns0:CashAccount38
+              sequence [1..1]
+                element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                  choice [1..1]
+                    element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                    element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                        element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                  sequence [1..1]
+                    element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+            element ns0:ChrgsAcctAgt [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+              sequence [1..1]
+                element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                  sequence [1..1]
+                    element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                    element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                      sequence [1..1]
+                        element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                      sequence [1..1]
+                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:BrnchId [0..1] : ns0:BranchData3
+                  sequence [1..1]
+                    element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+            element ns0:CdtTrfTxInf [1..*] : ns0:CreditTransferTransaction34
+              sequence [1..1]
+                element ns0:PmtId [1..1] : ns0:PaymentIdentification6
+                  sequence [1..1]
+                    element ns0:InstrId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:EndToEndId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:UETR [0..1] : ns0:UUIDv4Identifier <string pattern="[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}">
+                element ns0:PmtTpInf [0..1] : ns0:PaymentTypeInformation26
+                  sequence [1..1]
+                    element ns0:InstrPrty [0..1] : ns0:Priority2Code <string enum=[HIGH|NORM]>
+                    element ns0:SvcLvl [0..*] : ns0:ServiceLevel8Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalServiceLevel1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:LclInstrm [0..1] : ns0:LocalInstrument2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalLocalInstrument1Code <string minLength=1 maxLength=35>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtgyPurp [0..1] : ns0:CategoryPurpose1Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCategoryPurpose1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Amt [1..1] : ns0:AmountType4Choice
+                  choice [1..1]
+                    element ns0:InstdAmt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:EqvtAmt [1..1] : ns0:EquivalentAmount2
+                      sequence [1..1]
+                        element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                        element ns0:CcyOfTrf [1..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                element ns0:XchgRateInf [0..1] : ns0:ExchangeRate1
+                  sequence [1..1]
+                    element ns0:UnitCcy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:XchgRate [0..1] : ns0:BaseOneRate <decimal totalDigits=11 fractionDigits=10>
+                    element ns0:RateTp [0..1] : ns0:ExchangeRateType1Code <string enum=[SPOT|SALE|AGRD]>
+                    element ns0:CtrctId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:ChrgBr [0..1] : ns0:ChargeBearerType1Code <string enum=[DEBT|CRED|SHAR|SLEV]>
+                element ns0:ChqInstr [0..1] : ns0:Cheque11
+                  sequence [1..1]
+                    element ns0:ChqTp [0..1] : ns0:ChequeType2Code <string enum=[CCHQ|CCCH|BCHQ|DRFT|ELDR]>
+                    element ns0:ChqNb [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:ChqFr [0..1] : ns0:NameAndAddress16
+                      sequence [1..1]
+                        element ns0:Nm [1..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:Adr [1..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:DlvryMtd [0..1] : ns0:ChequeDeliveryMethod1Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ChequeDelivery1Code <string enum=[MLDB|MLCD|MLFA|CRDB|CRCD|CRFA|PUDB|PUCD|PUFA|RGDB|RGCD|RGFA]>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:DlvrTo [0..1] : ns0:NameAndAddress16
+                      sequence [1..1]
+                        element ns0:Nm [1..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:Adr [1..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:InstrPrty [0..1] : ns0:Priority2Code <string enum=[HIGH|NORM]>
+                    element ns0:ChqMtrtyDt [0..1] : ns0:ISODate <date>
+                    element ns0:FrmsCd [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:MemoFld [0..2] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:RgnlClrZone [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:PrtLctn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Sgntr [0..5] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:UltmtDbtr [0..1] : ns0:PartyIdentification135
+                  sequence [1..1]
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Id [0..1] : ns0:Party38Choice
+                      choice [1..1]
+                        element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                          sequence [1..1]
+                            element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                            element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                          sequence [1..1]
+                            element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                              sequence [1..1]
+                                element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:CtctDtls [0..1] : ns0:Contact4
+                      sequence [1..1]
+                        element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                        element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..*] : ns0:OtherContact1
+                          sequence [1..1]
+                            element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                            element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                        element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                element ns0:IntrmyAgt1 [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+                  sequence [1..1]
+                    element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                      sequence [1..1]
+                        element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                          sequence [1..1]
+                            element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:BrnchId [0..1] : ns0:BranchData3
+                      sequence [1..1]
+                        element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:IntrmyAgt1Acct [0..1] : ns0:CashAccount38
+                  sequence [1..1]
+                    element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                      choice [1..1]
+                        element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                        element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                            element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                element ns0:IntrmyAgt2 [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+                  sequence [1..1]
+                    element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                      sequence [1..1]
+                        element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                          sequence [1..1]
+                            element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:BrnchId [0..1] : ns0:BranchData3
+                      sequence [1..1]
+                        element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:IntrmyAgt2Acct [0..1] : ns0:CashAccount38
+                  sequence [1..1]
+                    element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                      choice [1..1]
+                        element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                        element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                            element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                element ns0:IntrmyAgt3 [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+                  sequence [1..1]
+                    element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                      sequence [1..1]
+                        element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                          sequence [1..1]
+                            element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:BrnchId [0..1] : ns0:BranchData3
+                      sequence [1..1]
+                        element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:IntrmyAgt3Acct [0..1] : ns0:CashAccount38
+                  sequence [1..1]
+                    element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                      choice [1..1]
+                        element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                        element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                            element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                element ns0:CdtrAgt [0..1] : ns0:BranchAndFinancialInstitutionIdentification6
+                  sequence [1..1]
+                    element ns0:FinInstnId [1..1] : ns0:FinancialInstitutionIdentification18
+                      sequence [1..1]
+                        element ns0:BICFI [0..1] : ns0:BICFIDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                        element ns0:ClrSysMmbId [0..1] : ns0:ClearingSystemMemberIdentification2
+                          sequence [1..1]
+                            element ns0:ClrSysId [0..1] : ns0:ClearingSystemIdentification2Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalClearingSystemIdentification1Code <string minLength=1 maxLength=5>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:MmbId [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..1] : ns0:GenericFinancialIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:SchmeNm [0..1] : ns0:FinancialIdentificationSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalFinancialInstitutionIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:BrnchId [0..1] : ns0:BranchData3
+                      sequence [1..1]
+                        element ns0:Id [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                          sequence [1..1]
+                            element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                  sequence [1..1]
+                                    element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                    element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                            element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:CdtrAgtAcct [0..1] : ns0:CashAccount38
+                  sequence [1..1]
+                    element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                      choice [1..1]
+                        element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                        element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                            element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                element ns0:Cdtr [0..1] : ns0:PartyIdentification135
+                  sequence [1..1]
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Id [0..1] : ns0:Party38Choice
+                      choice [1..1]
+                        element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                          sequence [1..1]
+                            element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                            element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                          sequence [1..1]
+                            element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                              sequence [1..1]
+                                element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:CtctDtls [0..1] : ns0:Contact4
+                      sequence [1..1]
+                        element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                        element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..*] : ns0:OtherContact1
+                          sequence [1..1]
+                            element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                            element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                        element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                element ns0:CdtrAcct [0..1] : ns0:CashAccount38
+                  sequence [1..1]
+                    element ns0:Id [1..1] : ns0:AccountIdentification4Choice
+                      choice [1..1]
+                        element ns0:IBAN [1..1] : ns0:IBAN2007Identifier <string pattern="[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}">
+                        element ns0:Othr [1..1] : ns0:GenericAccountIdentification1
+                          sequence [1..1]
+                            element ns0:Id [1..1] : ns0:Max34Text <string minLength=1 maxLength=34>
+                            element ns0:SchmeNm [0..1] : ns0:AccountSchemeName1Choice
+                              choice [1..1]
+                                element ns0:Cd [1..1] : ns0:ExternalAccountIdentification1Code <string minLength=1 maxLength=4>
+                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Tp [0..1] : ns0:CashAccountType2Choice
+                      choice [1..1]
+                        element ns0:Cd [1..1] : ns0:ExternalCashAccountType1Code <string minLength=1 maxLength=4>
+                        element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Ccy [0..1] : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Nm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Prxy [0..1] : ns0:ProxyAccountIdentification1
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:ProxyAccountType1Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:ExternalProxyAccountType1Code <string minLength=1 maxLength=4>
+                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Id [1..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                element ns0:UltmtCdtr [0..1] : ns0:PartyIdentification135
+                  sequence [1..1]
+                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                      sequence [1..1]
+                        element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                          choice [1..1]
+                            element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                            element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                        element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                    element ns0:Id [0..1] : ns0:Party38Choice
+                      choice [1..1]
+                        element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                          sequence [1..1]
+                            element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                            element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                          sequence [1..1]
+                            element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                              sequence [1..1]
+                                element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                              sequence [1..1]
+                                element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:CtctDtls [0..1] : ns0:Contact4
+                      sequence [1..1]
+                        element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                        element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                        element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                        element ns0:Othr [0..*] : ns0:OtherContact1
+                          sequence [1..1]
+                            element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                            element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                        element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                element ns0:InstrForCdtrAgt [0..*] : ns0:InstructionForCreditorAgent1
+                  sequence [1..1]
+                    element ns0:Cd [0..1] : ns0:Instruction3Code <string enum=[CHQB|HOLD|PHOB|TELB]>
+                    element ns0:InstrInf [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:InstrForDbtrAgt [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:Purp [0..1] : ns0:Purpose2Choice
+                  choice [1..1]
+                    element ns0:Cd [1..1] : ns0:ExternalPurpose1Code <string minLength=1 maxLength=4>
+                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:RgltryRptg [0..10] : ns0:RegulatoryReporting3
+                  sequence [1..1]
+                    element ns0:DbtCdtRptgInd [0..1] : ns0:RegulatoryReportingType1Code <string enum=[CRED|DEBT|BOTH]>
+                    element ns0:Authrty [0..1] : ns0:RegulatoryAuthority2
+                      sequence [1..1]
+                        element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                    element ns0:Dtls [0..*] : ns0:StructuredRegulatoryReporting3
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Dt [0..1] : ns0:ISODate <date>
+                        element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                        element ns0:Cd [0..1] : ns0:Max10Text <string minLength=1 maxLength=10>
+                        element ns0:Amt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                        element ns0:Inf [0..*] : ns0:Max35Text <string minLength=1 maxLength=35>
+                element ns0:Tax [0..1] : ns0:TaxInformation8
+                  sequence [1..1]
+                    element ns0:Cdtr [0..1] : ns0:TaxParty1
+                      sequence [1..1]
+                        element ns0:TaxId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:RegnId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TaxTp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:Dbtr [0..1] : ns0:TaxParty2
+                      sequence [1..1]
+                        element ns0:TaxId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:RegnId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:TaxTp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Authstn [0..1] : ns0:TaxAuthorisation1
+                          sequence [1..1]
+                            element ns0:Titl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:AdmstnZone [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:RefNb [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:Mtd [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:TtlTaxblBaseAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:TtlTaxAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                    element ns0:Dt [0..1] : ns0:ISODate <date>
+                    element ns0:SeqNb [0..1] : ns0:Number <decimal totalDigits=18 fractionDigits=0>
+                    element ns0:Rcrd [0..*] : ns0:TaxRecord2
+                      sequence [1..1]
+                        element ns0:Tp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Ctgy [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CtgyDtls [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:DbtrSts [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:CertId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:FrmsCd [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Prd [0..1] : ns0:TaxPeriod2
+                          sequence [1..1]
+                            element ns0:Yr [0..1] : ns0:ISODate <date>
+                            element ns0:Tp [0..1] : ns0:TaxRecordPeriod1Code <string enum=[MM01|MM02|MM03|MM04|MM05|MM06|MM07|MM08|MM09|MM10|MM11|MM12|QTR1|QTR2|QTR3|QTR4|HLF1|HLF2]>
+                            element ns0:FrToDt [0..1] : ns0:DatePeriod2
+                              sequence [1..1]
+                                element ns0:FrDt [1..1] : ns0:ISODate <date>
+                                element ns0:ToDt [1..1] : ns0:ISODate <date>
+                        element ns0:TaxAmt [0..1] : ns0:TaxAmount2
+                          sequence [1..1]
+                            element ns0:Rate [0..1] : ns0:PercentageRate <decimal totalDigits=11 fractionDigits=10>
+                            element ns0:TaxblBaseAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:TtlAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:Dtls [0..*] : ns0:TaxRecordDetails2
+                              sequence [1..1]
+                                element ns0:Prd [0..1] : ns0:TaxPeriod2
+                                  sequence [1..1]
+                                    element ns0:Yr [0..1] : ns0:ISODate <date>
+                                    element ns0:Tp [0..1] : ns0:TaxRecordPeriod1Code <string enum=[MM01|MM02|MM03|MM04|MM05|MM06|MM07|MM08|MM09|MM10|MM11|MM12|QTR1|QTR2|QTR3|QTR4|HLF1|HLF2]>
+                                    element ns0:FrToDt [0..1] : ns0:DatePeriod2
+                                      sequence [1..1]
+                                        element ns0:FrDt [1..1] : ns0:ISODate <date>
+                                        element ns0:ToDt [1..1] : ns0:ISODate <date>
+                                element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                  attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                        element ns0:AddtlInf [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:RltdRmtInf [0..10] : ns0:RemittanceLocation7
+                  sequence [1..1]
+                    element ns0:RmtId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                    element ns0:RmtLctnDtls [0..*] : ns0:RemittanceLocationData1
+                      sequence [1..1]
+                        element ns0:Mtd [1..1] : ns0:RemittanceLocationMethod2Code <string enum=[FAXI|EDIC|URID|EMAL|POST|SMSM]>
+                        element ns0:ElctrncAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                        element ns0:PstlAdr [0..1] : ns0:NameAndAddress16
+                          sequence [1..1]
+                            element ns0:Nm [1..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:Adr [1..1] : ns0:PostalAddress24
+                              sequence [1..1]
+                                element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                    element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                        element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                element ns0:RmtInf [0..1] : ns0:RemittanceInformation16
+                  sequence [1..1]
+                    element ns0:Ustrd [0..*] : ns0:Max140Text <string minLength=1 maxLength=140>
+                    element ns0:Strd [0..*] : ns0:StructuredRemittanceInformation16
+                      sequence [1..1]
+                        element ns0:RfrdDocInf [0..*] : ns0:ReferredDocumentInformation7
+                          sequence [1..1]
+                            element ns0:Tp [0..1] : ns0:ReferredDocumentType4
+                              sequence [1..1]
+                                element ns0:CdOrPrtry [1..1] : ns0:ReferredDocumentType3Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:DocumentType6Code <string enum=[MSIN|CNFA|DNFA|CINV|CREN|DEBN|HIRI|SBIN|CMCN|SOAC|DISP|BOLD|VCHR|AROI|TSUT|PUOR]>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Nb [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:RltdDt [0..1] : ns0:ISODate <date>
+                            element ns0:LineDtls [0..*] : ns0:DocumentLineInformation1
+                              sequence [1..1]
+                                element ns0:Id [1..*] : ns0:DocumentLineIdentification1
+                                  sequence [1..1]
+                                    element ns0:Tp [0..1] : ns0:DocumentLineType1
+                                      sequence [1..1]
+                                        element ns0:CdOrPrtry [1..1] : ns0:DocumentLineType1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalDocumentLineType1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Nb [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:RltdDt [0..1] : ns0:ISODate <date>
+                                element ns0:Desc [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                                element ns0:Amt [0..1] : ns0:RemittanceAmount3
+                                  sequence [1..1]
+                                    element ns0:DuePyblAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:DscntApldAmt [0..*] : ns0:DiscountAmountAndType1
+                                      sequence [1..1]
+                                        element ns0:Tp [0..1] : ns0:DiscountAmountType1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalDiscountAmountType1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:CdtNoteAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:TaxAmt [0..*] : ns0:TaxAmountAndType1
+                                      sequence [1..1]
+                                        element ns0:Tp [0..1] : ns0:TaxAmountType1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalTaxAmountType1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:AdjstmntAmtAndRsn [0..*] : ns0:DocumentAdjustment1
+                                      sequence [1..1]
+                                        element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                        element ns0:CdtDbtInd [0..1] : ns0:CreditDebitCode <string enum=[CRDT|DBIT]>
+                                        element ns0:Rsn [0..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                        element ns0:AddtlInf [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                    element ns0:RmtdAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                        element ns0:RfrdDocAmt [0..1] : ns0:RemittanceAmount2
+                          sequence [1..1]
+                            element ns0:DuePyblAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:DscntApldAmt [0..*] : ns0:DiscountAmountAndType1
+                              sequence [1..1]
+                                element ns0:Tp [0..1] : ns0:DiscountAmountType1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalDiscountAmountType1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                  attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:CdtNoteAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:TaxAmt [0..*] : ns0:TaxAmountAndType1
+                              sequence [1..1]
+                                element ns0:Tp [0..1] : ns0:TaxAmountType1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalTaxAmountType1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                  attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:AdjstmntAmtAndRsn [0..*] : ns0:DocumentAdjustment1
+                              sequence [1..1]
+                                element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                  attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                element ns0:CdtDbtInd [0..1] : ns0:CreditDebitCode <string enum=[CRDT|DBIT]>
+                                element ns0:Rsn [0..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                element ns0:AddtlInf [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:RmtdAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                        element ns0:CdtrRefInf [0..1] : ns0:CreditorReferenceInformation2
+                          sequence [1..1]
+                            element ns0:Tp [0..1] : ns0:CreditorReferenceType2
+                              sequence [1..1]
+                                element ns0:CdOrPrtry [1..1] : ns0:CreditorReferenceType1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:DocumentType3Code <string enum=[RADM|RPIN|FXDR|DISP|PUOR|SCOR]>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Ref [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                        element ns0:Invcr [0..1] : ns0:PartyIdentification135
+                          sequence [1..1]
+                            element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                              sequence [1..1]
+                                element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                    element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                        element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:Id [0..1] : ns0:Party38Choice
+                              choice [1..1]
+                                element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                                  sequence [1..1]
+                                    element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                                    element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                                  sequence [1..1]
+                                    element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                                      sequence [1..1]
+                                        element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                        element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                    element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:CtctDtls [0..1] : ns0:Contact4
+                              sequence [1..1]
+                                element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                                element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:Othr [0..*] : ns0:OtherContact1
+                                  sequence [1..1]
+                                    element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                    element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                                element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                        element ns0:Invcee [0..1] : ns0:PartyIdentification135
+                          sequence [1..1]
+                            element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                              sequence [1..1]
+                                element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                    element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                        element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                            element ns0:Id [0..1] : ns0:Party38Choice
+                              choice [1..1]
+                                element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                                  sequence [1..1]
+                                    element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                                    element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                                    element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                                  sequence [1..1]
+                                    element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                                      sequence [1..1]
+                                        element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                        element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                    element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                                      sequence [1..1]
+                                        element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                          choice [1..1]
+                                            element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                            element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                        element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                            element ns0:CtctDtls [0..1] : ns0:Contact4
+                              sequence [1..1]
+                                element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                                element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:Othr [0..*] : ns0:OtherContact1
+                                  sequence [1..1]
+                                    element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                    element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                                element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                        element ns0:TaxRmt [0..1] : ns0:TaxInformation7
+                          sequence [1..1]
+                            element ns0:Cdtr [0..1] : ns0:TaxParty1
+                              sequence [1..1]
+                                element ns0:TaxId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:RegnId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TaxTp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Dbtr [0..1] : ns0:TaxParty2
+                              sequence [1..1]
+                                element ns0:TaxId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:RegnId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TaxTp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Authstn [0..1] : ns0:TaxAuthorisation1
+                                  sequence [1..1]
+                                    element ns0:Titl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:UltmtDbtr [0..1] : ns0:TaxParty2
+                              sequence [1..1]
+                                element ns0:TaxId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:RegnId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:TaxTp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Authstn [0..1] : ns0:TaxAuthorisation1
+                                  sequence [1..1]
+                                    element ns0:Titl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:AdmstnZone [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:RefNb [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:Mtd [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:TtlTaxblBaseAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:TtlTaxAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:Dt [0..1] : ns0:ISODate <date>
+                            element ns0:SeqNb [0..1] : ns0:Number <decimal totalDigits=18 fractionDigits=0>
+                            element ns0:Rcrd [0..*] : ns0:TaxRecord2
+                              sequence [1..1]
+                                element ns0:Tp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Ctgy [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtgyDtls [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:DbtrSts [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CertId [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:FrmsCd [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Prd [0..1] : ns0:TaxPeriod2
+                                  sequence [1..1]
+                                    element ns0:Yr [0..1] : ns0:ISODate <date>
+                                    element ns0:Tp [0..1] : ns0:TaxRecordPeriod1Code <string enum=[MM01|MM02|MM03|MM04|MM05|MM06|MM07|MM08|MM09|MM10|MM11|MM12|QTR1|QTR2|QTR3|QTR4|HLF1|HLF2]>
+                                    element ns0:FrToDt [0..1] : ns0:DatePeriod2
+                                      sequence [1..1]
+                                        element ns0:FrDt [1..1] : ns0:ISODate <date>
+                                        element ns0:ToDt [1..1] : ns0:ISODate <date>
+                                element ns0:TaxAmt [0..1] : ns0:TaxAmount2
+                                  sequence [1..1]
+                                    element ns0:Rate [0..1] : ns0:PercentageRate <decimal totalDigits=11 fractionDigits=10>
+                                    element ns0:TaxblBaseAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:TtlAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                      attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                    element ns0:Dtls [0..*] : ns0:TaxRecordDetails2
+                                      sequence [1..1]
+                                        element ns0:Prd [0..1] : ns0:TaxPeriod2
+                                          sequence [1..1]
+                                            element ns0:Yr [0..1] : ns0:ISODate <date>
+                                            element ns0:Tp [0..1] : ns0:TaxRecordPeriod1Code <string enum=[MM01|MM02|MM03|MM04|MM05|MM06|MM07|MM08|MM09|MM10|MM11|MM12|QTR1|QTR2|QTR3|QTR4|HLF1|HLF2]>
+                                            element ns0:FrToDt [0..1] : ns0:DatePeriod2
+                                              sequence [1..1]
+                                                element ns0:FrDt [1..1] : ns0:ISODate <date>
+                                                element ns0:ToDt [1..1] : ns0:ISODate <date>
+                                        element ns0:Amt [1..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                                          attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                                element ns0:AddtlInf [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                        element ns0:GrnshmtRmt [0..1] : ns0:Garnishment3
+                          sequence [1..1]
+                            element ns0:Tp [1..1] : ns0:GarnishmentType1
+                              sequence [1..1]
+                                element ns0:CdOrPrtry [1..1] : ns0:GarnishmentType1Choice
+                                  choice [1..1]
+                                    element ns0:Cd [1..1] : ns0:ExternalGarnishmentType1Code <string minLength=1 maxLength=4>
+                                    element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                            element ns0:Grnshee [0..1] : ns0:PartyIdentification135
+                              sequence [1..1]
+                                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                                  sequence [1..1]
+                                    element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                                      choice [1..1]
+                                        element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                        element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                            element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                    element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:Id [0..1] : ns0:Party38Choice
+                                  choice [1..1]
+                                    element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                                      sequence [1..1]
+                                        element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                                        element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                              choice [1..1]
+                                                element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                                      sequence [1..1]
+                                        element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                                          sequence [1..1]
+                                            element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                            element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                        element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                              choice [1..1]
+                                                element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                element ns0:CtctDtls [0..1] : ns0:Contact4
+                                  sequence [1..1]
+                                    element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                    element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                                    element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:Othr [0..*] : ns0:OtherContact1
+                                      sequence [1..1]
+                                        element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                        element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                                    element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                            element ns0:GrnshmtAdmstr [0..1] : ns0:PartyIdentification135
+                              sequence [1..1]
+                                element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                element ns0:PstlAdr [0..1] : ns0:PostalAddress24
+                                  sequence [1..1]
+                                    element ns0:AdrTp [0..1] : ns0:AddressType3Choice
+                                      choice [1..1]
+                                        element ns0:Cd [1..1] : ns0:AddressType2Code <string enum=[ADDR|PBOX|HOME|BIZZ|MLTO|DLVY]>
+                                        element ns0:Prtry [1..1] : ns0:GenericIdentification30
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Exact4AlphaNumericText <string pattern="[a-zA-Z0-9]{4}">
+                                            element ns0:Issr [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:SubDept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:StrtNm [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:BldgNb [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:BldgNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Flr [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:PstBx [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:Room [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:PstCd [0..1] : ns0:Max16Text <string minLength=1 maxLength=16>
+                                    element ns0:TwnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:TwnLctnNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:DstrctNm [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:CtrySubDvsn [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Ctry [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                    element ns0:AdrLine [0..7] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                element ns0:Id [0..1] : ns0:Party38Choice
+                                  choice [1..1]
+                                    element ns0:OrgId [1..1] : ns0:OrganisationIdentification29
+                                      sequence [1..1]
+                                        element ns0:AnyBIC [0..1] : ns0:AnyBICDec2014Identifier <string pattern="[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}">
+                                        element ns0:LEI [0..1] : ns0:LEIIdentifier <string pattern="[A-Z0-9]{18,18}[0-9]{2,2}">
+                                        element ns0:Othr [0..*] : ns0:GenericOrganisationIdentification1
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:OrganisationIdentificationSchemeName1Choice
+                                              choice [1..1]
+                                                element ns0:Cd [1..1] : ns0:ExternalOrganisationIdentification1Code <string minLength=1 maxLength=4>
+                                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:PrvtId [1..1] : ns0:PersonIdentification13
+                                      sequence [1..1]
+                                        element ns0:DtAndPlcOfBirth [0..1] : ns0:DateAndPlaceOfBirth1
+                                          sequence [1..1]
+                                            element ns0:BirthDt [1..1] : ns0:ISODate <date>
+                                            element ns0:PrvcOfBirth [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:CityOfBirth [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:CtryOfBirth [1..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                        element ns0:Othr [0..*] : ns0:GenericPersonIdentification1
+                                          sequence [1..1]
+                                            element ns0:Id [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:SchmeNm [0..1] : ns0:PersonIdentificationSchemeName1Choice
+                                              choice [1..1]
+                                                element ns0:Cd [1..1] : ns0:ExternalPersonIdentification1Code <string minLength=1 maxLength=4>
+                                                element ns0:Prtry [1..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                            element ns0:Issr [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                element ns0:CtryOfRes [0..1] : ns0:CountryCode <string pattern="[A-Z]{2,2}">
+                                element ns0:CtctDtls [0..1] : ns0:Contact4
+                                  sequence [1..1]
+                                    element ns0:NmPrfx [0..1] : ns0:NamePrefix2Code <string enum=[DOCT|MADM|MISS|MIST|MIKS]>
+                                    element ns0:Nm [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                                    element ns0:PhneNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:MobNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:FaxNb [0..1] : ns0:PhoneNumber <string pattern="\\+[0-9]{1,3}-[0-9()+\\-]{1,30}">
+                                    element ns0:EmailAdr [0..1] : ns0:Max2048Text <string minLength=1 maxLength=2048>
+                                    element ns0:EmailPurp [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:JobTitl [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Rspnsblty [0..1] : ns0:Max35Text <string minLength=1 maxLength=35>
+                                    element ns0:Dept [0..1] : ns0:Max70Text <string minLength=1 maxLength=70>
+                                    element ns0:Othr [0..*] : ns0:OtherContact1
+                                      sequence [1..1]
+                                        element ns0:ChanlTp [1..1] : ns0:Max4Text <string minLength=1 maxLength=4>
+                                        element ns0:Id [0..1] : ns0:Max128Text <string minLength=1 maxLength=128>
+                                    element ns0:PrefrdMtd [0..1] : ns0:PreferredContactMethod1Code <string enum=[LETT|MAIL|PHON|FAXX|CELL]>
+                            element ns0:RefNb [0..1] : ns0:Max140Text <string minLength=1 maxLength=140>
+                            element ns0:Dt [0..1] : ns0:ISODate <date>
+                            element ns0:RmtdAmt [0..1] : ns0:ActiveOrHistoricCurrencyAndAmount <decimal totalDigits=18 fractionDigits=5 minInclusive=0.0>
+                              attribute Ccy required : ns0:ActiveOrHistoricCurrencyCode <string pattern="[A-Z]{3,3}">
+                            element ns0:FmlyMdclInsrncInd [0..1] : ns0:TrueFalseIndicator <boolean>
+                            element ns0:MplyeeTermntnInd [0..1] : ns0:TrueFalseIndicator <boolean>
+                        element ns0:AddtlRmtInf [0..3] : ns0:Max140Text <string minLength=1 maxLength=140>
+                element ns0:SplmtryData [0..*] : ns0:SupplementaryData1
+                  sequence [1..1]
+                    element ns0:PlcAndNm [0..1] : ns0:Max350Text <string minLength=1 maxLength=350>
+                    element ns0:Envlp [1..1] : ns0:SupplementaryDataEnvelope1
+                      sequence [1..1]
+                        any [1..1] ##any lax
+        element ns0:SplmtryData [0..*] : ns0:SupplementaryData1
+          sequence [1..1]
+            element ns0:PlcAndNm [0..1] : ns0:Max350Text <string minLength=1 maxLength=350>
+            element ns0:Envlp [1..1] : ns0:SupplementaryDataEnvelope1
+              sequence [1..1]
+                any [1..1] ##any lax

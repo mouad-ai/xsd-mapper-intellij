@@ -1,0 +1,46 @@
+schema main.xsd
+targetNamespace urn:ugly:subst
+xmlns:ns0 urn:ugly:subst
+xmlns:ns1 urn:ugly:subst-ext
+roots ns0:Drawing ns0:Circle ns0:Note ns0:RoundedSquare ns0:Square ns0:Triangle ns0:UrgentNote
+
+element ns0:Drawing [1..1] : (anonymous)
+  sequence [1..1]
+    substitutionGroup ns0:Shape [1..*]
+      element ns0:Circle [1..1] : ns0:CircleType substitutes=ns0:Shape
+        attribute id optional : xs:ID <ID>
+        sequence [1..1]
+          element ns0:Radius [1..1] : xs:double <double>
+      element ns0:RoundedSquare [1..1] : ns0:SquareType substitutes=ns0:Square
+        attribute id optional : xs:ID <ID>
+        sequence [1..1]
+          element ns0:Side [1..1] : xs:double <double>
+      element ns0:Square [1..1] : ns0:SquareType substitutes=ns0:Shape
+        attribute id optional : xs:ID <ID>
+        sequence [1..1]
+          element ns0:Side [1..1] : xs:double <double>
+      element ns0:Triangle [1..1] : ns0:ShapeType substitutes=ns0:Polygon
+        attribute id optional : xs:ID <ID>
+      element ns1:Hexagon [1..1] : (anonymous) substitutes=ns0:Shape
+        attribute id optional : xs:ID <ID>
+        sequence [1..1]
+          element ns1:Side [1..1] : xs:double <double>
+    substitutionGroup ns0:Note [0..1]
+      element ns0:Note [1..1] : xs:string <string>
+      element ns0:UrgentNote [1..1] : xs:string substitutes=ns0:Note <string>
+element ns0:Circle [1..1] : ns0:CircleType substitutes=ns0:Shape
+  attribute id optional : xs:ID <ID>
+  sequence [1..1]
+    element ns0:Radius [1..1] : xs:double <double>
+element ns0:Note [1..1] : xs:string <string>
+element ns0:RoundedSquare [1..1] : ns0:SquareType substitutes=ns0:Square
+  attribute id optional : xs:ID <ID>
+  sequence [1..1]
+    element ns0:Side [1..1] : xs:double <double>
+element ns0:Square [1..1] : ns0:SquareType substitutes=ns0:Shape
+  attribute id optional : xs:ID <ID>
+  sequence [1..1]
+    element ns0:Side [1..1] : xs:double <double>
+element ns0:Triangle [1..1] : ns0:ShapeType substitutes=ns0:Polygon
+  attribute id optional : xs:ID <ID>
+element ns0:UrgentNote [1..1] : xs:string substitutes=ns0:Note <string>
