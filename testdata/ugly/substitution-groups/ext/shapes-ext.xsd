@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adds a member to urn:ugly:subst's Shape group from another namespace; imports main.xsd back (circular import). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:s="urn:ugly:subst"
+           targetNamespace="urn:ugly:subst-ext"
+           elementFormDefault="qualified">
+    <xs:import namespace="urn:ugly:subst" schemaLocation="../main.xsd"/>
+
+    <xs:element name="Hexagon" substitutionGroup="s:Shape">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="s:ShapeType">
+                    <xs:sequence>
+                        <xs:element name="Side" type="xs:double"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

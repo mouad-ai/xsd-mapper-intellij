@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:include"
+           targetNamespace="urn:ugly:include"
+           elementFormDefault="qualified">
+    <xs:include schemaLocation="../../shared/money.xsd"/>
+
+    <xs:complexType name="LineType">
+        <xs:sequence>
+            <xs:element name="Product" type="xs:string"/>
+            <xs:element name="Quantity" type="QuantityType"/>
+            <xs:element name="Price" type="MoneyType"/>
+        </xs:sequence>
+        <xs:attribute name="number" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+</xs:schema>

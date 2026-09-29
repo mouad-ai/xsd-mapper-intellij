@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:include"
+           targetNamespace="urn:ugly:include"
+           elementFormDefault="qualified">
+    <!-- Deliberately roundabout relative path. -->
+    <xs:include schemaLocation="../level1/level2/lines.xsd"/>
+    <xs:include schemaLocation="chameleon/common.xsd"/>
+
+    <xs:complexType name="OrderType">
+        <xs:sequence>
+            <xs:element name="Id" type="IdentifierType"/>
+            <xs:element name="ShipTo" type="AddressType"/>
+            <xs:element name="Line" type="LineType" maxOccurs="unbounded"/>
+            <xs:element name="Total" type="MoneyType"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

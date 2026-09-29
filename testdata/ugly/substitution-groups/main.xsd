@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Substitution groups: an abstract head (Shape) with direct, transitive (RoundedSquare via Square), abstract
+     (Polygon, itself substituted by Triangle) and cross-namespace (ext:Hexagon) members, plus a non-abstract head (Note).
+     main.xsd and ext/shapes-ext.xsd import each other. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:subst"
+           xmlns:ext="urn:ugly:subst-ext"
+           targetNamespace="urn:ugly:subst"
+           elementFormDefault="qualified">
+    <xs:import namespace="urn:ugly:subst-ext" schemaLocation="ext/shapes-ext.xsd"/>
+
+    <xs:complexType name="ShapeType" abstract="true">
+        <xs:attribute name="id" type="xs:ID"/>
+    </xs:complexType>
+
+    <xs:complexType name="CircleType">
+        <xs:complexContent>
+            <xs:extension base="ShapeType">
+                <xs:sequence>
+                    <xs:element name="Radius" type="xs:double"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="SquareType">
+        <xs:complexContent>
+            <xs:extension base="ShapeType">
+                <xs:sequence>
+                    <xs:element name="Side" type="xs:double"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="Shape" type="ShapeType" abstract="true"/>
+    <xs:element name="Circle" type="CircleType" substitutionGroup="Shape"/>
+    <xs:element name="Square" type="SquareType" substitutionGroup="Shape"/>
+    <xs:element name="RoundedSquare" type="SquareType" substitutionGroup="Square"/>
+    <xs:element name="Polygon" type="ShapeType" substitutionGroup="Shape" abstract="true"/>
+    <xs:element name="Triangle" type="ShapeType" substitutionGroup="Polygon"/>
+
+    <xs:element name="Note" type="xs:string"/>
+    <xs:element name="UrgentNote" type="xs:string" substitutionGroup="Note"/>
+
+    <xs:element name="Drawing">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Shape" maxOccurs="unbounded"/>
+                <xs:element ref="Note" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
