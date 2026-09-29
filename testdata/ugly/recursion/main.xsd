@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Recursion in four shapes: direct (PartType), indirect through another type (TreeType -> BranchType -> TreeType),
+     through an element ref to a global element with an anonymous type (Expr), and through a model group (ListItems). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:recursion"
+           targetNamespace="urn:ugly:recursion"
+           elementFormDefault="qualified">
+    <xs:complexType name="PartType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="SubPart" type="PartType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="TreeType">
+        <xs:sequence>
+            <xs:element name="Branch" type="BranchType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BranchType">
+        <xs:sequence>
+            <xs:element name="Leaf" type="xs:string" minOccurs="0"/>
+            <xs:element name="Tree" type="TreeType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Expr">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="Literal" type="xs:integer"/>
+                <xs:sequence>
+                    <xs:element name="Op" type="xs:string"/>
+                    <xs:element ref="Expr" minOccurs="2" maxOccurs="2"/>
+                </xs:sequence>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:group name="ListItems">
+        <xs:sequence>
+            <xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="SubList" type="ListType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:group>
+
+    <xs:complexType name="ListType">
+        <xs:group ref="ListItems"/>
+    </xs:complexType>
+
+    <xs:element name="Model">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Part" type="PartType"/>
+                <xs:element name="Tree" type="TreeType"/>
+                <xs:element ref="Expr"/>
+                <xs:element name="List" type="ListType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Redefined by main.xsd, which appends a Country element. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:include"
+           targetNamespace="urn:ugly:include"
+           elementFormDefault="qualified">
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element name="Street" type="xs:string"/>
+            <xs:element name="City" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

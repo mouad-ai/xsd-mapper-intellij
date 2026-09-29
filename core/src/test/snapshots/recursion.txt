@@ -1,0 +1,33 @@
+schema main.xsd
+targetNamespace urn:ugly:recursion
+xmlns:ns0 urn:ugly:recursion
+roots ns0:Model ns0:Expr
+
+element ns0:Model [1..1] : (anonymous)
+  sequence [1..1]
+    element ns0:Part [1..1] : ns0:PartType
+      sequence [1..1]
+        element ns0:Name [1..1] : xs:string <string>
+        recursion ns0:SubPart [0..*] : ns0:PartType -> ancestor 1
+    element ns0:Tree [1..1] : ns0:TreeType
+      sequence [1..1]
+        element ns0:Branch [0..*] : ns0:BranchType
+          sequence [1..1]
+            element ns0:Leaf [0..1] : xs:string <string>
+            recursion ns0:Tree [0..1] : ns0:TreeType -> ancestor 2
+    element ns0:Expr [1..1] : (anonymous)
+      choice [1..1]
+        element ns0:Literal [1..1] : xs:integer <integer pattern="[\\-+]?[0-9]+" fractionDigits=0>
+        sequence [1..1]
+          element ns0:Op [1..1] : xs:string <string>
+          recursion ns0:Expr [2..2] : (anonymous) -> ancestor 1
+    element ns0:List [1..1] : ns0:ListType
+      sequence [1..1]
+        element ns0:Item [1..*] : xs:string <string>
+        recursion ns0:SubList [0..1] : ns0:ListType -> ancestor 1
+element ns0:Expr [1..1] : (anonymous)
+  choice [1..1]
+    element ns0:Literal [1..1] : xs:integer <integer pattern="[\\-+]?[0-9]+" fractionDigits=0>
+    sequence [1..1]
+      element ns0:Op [1..1] : xs:string <string>
+      recursion ns0:Expr [2..2] : (anonymous) -> ancestor 1

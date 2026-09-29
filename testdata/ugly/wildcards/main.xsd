@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xs:any with each namespace constraint and processContents value, xs:anyAttribute, and an element with no type
+     (xs:anyType). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:wildcards"
+           targetNamespace="urn:ugly:wildcards"
+           elementFormDefault="qualified">
+    <xs:element name="Envelope">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Header">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Body">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:any namespace="##any" processContents="strict"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Extensions" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:any namespace="##targetNamespace urn:ugly:other ##local" processContents="skip"
+                                    minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Untyped" minOccurs="0"/>
+            </xs:sequence>
+            <xs:anyAttribute namespace="##other" processContents="lax"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

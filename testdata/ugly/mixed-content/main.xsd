@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mixed content: text interleaved with repeating inline markup (itself recursive), mixed with no child elements,
+     and simple content with attributes for contrast. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:mixed"
+           targetNamespace="urn:ugly:mixed"
+           elementFormDefault="qualified">
+    <xs:complexType name="InlineType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="b" type="InlineType"/>
+            <xs:element name="i" type="InlineType"/>
+            <xs:element name="link">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="href" type="xs:anyURI" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="TextOnlyType" mixed="true">
+        <xs:attribute name="lang" type="xs:language"/>
+    </xs:complexType>
+
+    <xs:element name="Document">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Title" type="TextOnlyType"/>
+                <xs:element name="Paragraph" type="InlineType" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

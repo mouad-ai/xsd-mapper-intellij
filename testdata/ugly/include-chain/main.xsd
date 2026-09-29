@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Entry point. Include chain: main -> level1/orders -> level1/level2/lines -> shared/money -> shared/units/units,
+     plus a chameleon include (level1/chameleon/common.xsd has no targetNamespace) and an xs:redefine. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:include"
+           targetNamespace="urn:ugly:include"
+           elementFormDefault="qualified">
+    <xs:include schemaLocation="level1/orders.xsd"/>
+    <xs:redefine schemaLocation="shared/address.xsd">
+        <xs:complexType name="AddressType">
+            <xs:complexContent>
+                <xs:extension base="AddressType">
+                    <xs:sequence>
+                        <xs:element name="Country" type="xs:string"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:redefine>
+
+    <xs:element name="Order" type="OrderType"/>
+</xs:schema>

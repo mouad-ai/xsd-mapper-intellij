@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Local elements are unqualified here (elementFormDefault defaults to unqualified). -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:party"
+           xmlns:c="urn:ugly:common"
+           targetNamespace="urn:ugly:party">
+    <xs:import namespace="urn:ugly:common" schemaLocation="../common/codes.xsd"/>
+
+    <xs:complexType name="PartyType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Country" type="c:CountryCodeType"/>
+            <xs:element ref="c:TaxId" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

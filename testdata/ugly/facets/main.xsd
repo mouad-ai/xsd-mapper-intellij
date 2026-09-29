@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every constraining facet the model keeps, a pattern restricted twice (two patterns, both apply), built-in types
+     with implicit facets, and nillable/default/fixed on elements and attributes. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:facets"
+           targetNamespace="urn:ugly:facets"
+           elementFormDefault="qualified">
+    <xs:simpleType name="StatusCode">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="OPEN"/>
+            <xs:enumeration value="CLOSED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="CountryCode">
+        <xs:restriction base="xs:string">
+            <xs:length value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Name">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="35"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Amount">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="18"/>
+            <xs:fractionDigits value="2"/>
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="1000000"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="Percent">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+            <xs:maxExclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="BaseId">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ShortId">
+        <xs:restriction base="BaseId">
+            <xs:pattern value=".{1,5}"/>
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="Record">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Status" type="StatusCode" default="NEW"/>
+                <xs:element name="Country" type="CountryCode" fixed="MA"/>
+                <xs:element name="Name" type="Name" nillable="true"/>
+                <xs:element name="Amount" type="Amount"/>
+                <xs:element name="Discount" type="Percent" minOccurs="0"/>
+                <xs:element name="Id" type="ShortId"/>
+                <xs:element name="Count" type="xs:unsignedByte"/>
+            </xs:sequence>
+            <xs:attribute name="version" type="xs:string" fixed="2"/>
+            <xs:attribute name="priority" type="xs:int" default="0"/>
+            <xs:attribute name="status" type="StatusCode" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
