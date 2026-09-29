@@ -58,4 +58,6 @@ If a task seems to need something out of scope, stop and ask instead of building
 - `./gradlew build` — build everything + tests
 - `./gradlew :core:test` — fast core tests
 - `./gradlew :plugin:runIde` — sandbox IDE
+- `./gradlew :plugin:runIdeCurrent` — sandbox IDE on the current stable IntelliJ IDEA (the plugin compiles against the oldest supported line)
+- `./gradlew :core:test -Psnapshots.update` — rewrite tree snapshots in `core/src/test/snapshots` after an intended change
 - `./gradlew :plugin:verifyPlugin` — Marketplace compatibility check
