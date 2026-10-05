@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Choices nested in sequences and in each other, repeating optional choices, a choice from a group ref, and xs:all. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:ugly:choice"
+           targetNamespace="urn:ugly:choice"
+           elementFormDefault="qualified">
+    <xs:group name="ContactChoice">
+        <xs:choice>
+            <xs:element name="Email" type="xs:string"/>
+            <xs:element name="Phone" type="xs:string"/>
+        </xs:choice>
+    </xs:group>
+
+    <xs:complexType name="AddressType">
+        <xs:all>
+            <xs:element name="Street" type="xs:string"/>
+            <xs:element name="City" type="xs:string"/>
+            <xs:element name="Zip" type="xs:string" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:element name="Payment">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Id" type="xs:string"/>
+                <xs:choice>
+                    <xs:element name="Card">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Number" type="xs:string"/>
+                                <xs:element name="Expiry" type="xs:gYearMonth"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Iban" type="xs:string"/>
+                    <xs:sequence>
+                        <xs:element name="AccountNo" type="xs:string"/>
+                        <xs:element name="SortCode" type="xs:string"/>
+                    </xs:sequence>
+                </xs:choice>
+                <xs:element name="Amount" type="xs:decimal"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="Note" type="xs:string"/>
+                    <xs:element name="Tag" type="xs:token"/>
+                </xs:choice>
+                <xs:choice>
+                    <xs:choice>
+                        <xs:element name="Urgent" type="xs:boolean"/>
+                        <xs:element name="Deferred" type="xs:date"/>
+                    </xs:choice>
+                    <xs:element name="Scheduled" type="xs:dateTime"/>
+                </xs:choice>
+                <xs:group ref="ContactChoice" minOccurs="0"/>
+                <xs:element name="BillingAddress" type="AddressType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

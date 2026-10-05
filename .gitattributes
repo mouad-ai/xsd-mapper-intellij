@@ -1,0 +1,3 @@
+# Keep snapshot and schema files byte-identical on every OS.
+core/src/test/snapshots/** text eol=lf
+testdata/** -text

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Imports across four namespaces. urn:ugly:common is split over two documents (amounts.xsd, codes.xsd) that are
+     imported from different schemas: loading both requires honouring every schemaLocation for that namespace.
+     Also imports a no-namespace schema (hence no default namespace here: ref="Remark" must mean no namespace)
+     and uses a qualified global attribute from another namespace. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:o="urn:ugly:order"
+           xmlns:p="urn:ugly:party"
+           xmlns:c="urn:ugly:common"
+           targetNamespace="urn:ugly:order"
+           elementFormDefault="qualified">
+    <xs:import namespace="urn:ugly:party" schemaLocation="party/party.xsd"/>
+    <xs:import namespace="urn:ugly:common" schemaLocation="common/amounts.xsd"/>
+    <xs:import schemaLocation="nons/notes.xsd"/>
+
+    <xs:element name="PurchaseOrder">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Buyer" type="p:PartyType"/>
+                <xs:element name="Seller" type="p:PartyType"/>
+                <xs:element ref="c:Amount"/>
+                <xs:element ref="Remark" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute ref="c:version" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

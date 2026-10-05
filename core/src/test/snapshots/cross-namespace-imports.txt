@@ -1,0 +1,23 @@
+schema main.xsd
+targetNamespace urn:ugly:order
+xmlns:ns0 urn:ugly:order
+xmlns:ns1 urn:ugly:common
+xmlns:ns2 urn:ugly:party
+roots ns0:PurchaseOrder
+
+element ns0:PurchaseOrder [1..1] : (anonymous)
+  attribute ns1:version required : xs:string fixed="1.0" <string>
+  sequence [1..1]
+    element ns0:Buyer [1..1] : ns2:PartyType
+      sequence [1..1]
+        element Name [1..1] : xs:string <string>
+        element Country [1..1] : ns1:CountryCodeType <string pattern="[A-Z]{2}">
+        element ns1:TaxId [0..1] : xs:string <string>
+    element ns0:Seller [1..1] : ns2:PartyType
+      sequence [1..1]
+        element Name [1..1] : xs:string <string>
+        element Country [1..1] : ns1:CountryCodeType <string pattern="[A-Z]{2}">
+        element ns1:TaxId [0..1] : xs:string <string>
+    element ns1:Amount [1..1] : (anonymous) <decimal>
+      attribute ns1:currency required : xs:string <string>
+    element Remark [0..1] : xs:string <string>

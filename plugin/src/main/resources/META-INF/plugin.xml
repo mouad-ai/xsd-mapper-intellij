@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>com.github.mouadai.xsdmapper</id>
+    <name>XSD Mapper</name>
+    <vendor url="https://github.com/mouad-ai/xsd-mapper-intellij">mouad-ai</vendor>
+
+    <description><![CDATA[
+    Tools for integration developers working with XML Schemas (XSD).
+    <ul>
+        <li><b>Schema Tree</b> tool window: the element tree of an XSD, with <code>xs:include</code> and
+            <code>xs:import</code> resolved relative to each schema file, choices, wildcards, substitution groups
+            and recursion shown explicitly.</li>
+    </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Schema Tree"
+                    anchor="right"
+                    icon="AllIcons.Toolwindows.ToolWindowStructure"
+                    factoryClass="com.github.mouadai.xsdmapper.plugin.SchemaTreeToolWindowFactory"/>
+    </extensions>
+
+    <actions>
+        <action id="XsdMapper.ShowSchemaTree"
+                class="com.github.mouadai.xsdmapper.plugin.ShowSchemaTreeAction"
+                text="Show Schema Tree"
+                description="Show the element tree of this XML Schema in the Schema Tree tool window">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
